@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editin Bang! | Jasa Editing Video</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #3b82f6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Animasi --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-btn {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* --- Button Primary --- */
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5);
+        }
+
+        /* --- Hero Section --- */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        /* Profile Logo Section */
+        .hero-profile {
+            position: relative;
+            width: fit-content;
+            margin: 0 auto 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid transparent;
+            background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+                        linear-gradient(to right, #e879f9, #38bdf8) border-box;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem); 
+            white-space: nowrap; 
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Keunggulan Section --- */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 20px 60px;
+            text-align: center;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(96, 165, 250, 0.5);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #e2e8f0;
+        }
+
+        /* --- General Section Styles --- */
+        .section-wrapper {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- Horizontal Slider Base --- */
+        .h-slider {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            scroll-snap-type: x mandatory;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .h-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* --- Client Avatars --- */
+        .client-avatar {
+            flex: 0 0 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 2px solid #475569;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-weight: bold;
+            font-size: 0.9rem;
+            scroll-snap-align: start;
+            transition: all 0.3s ease;
+        }
+        .client-avatar:hover {
+            border-color: var(--accent);
+            color: white;
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        /* --- Portofolio YT Shorts (Playable iFrame) --- */
+        .short-card {
+            flex: 0 0 200px; 
+            height: 355px;   
+            background-color: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .short-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .short-card iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- Testimoni WhatsApp --- */
+        .testi-card {
+            flex: 0 0 240px;
+            height: 400px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .testi-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            border-radius: 8px;
+            background-color: #0f172a;
+        }
+
+        /* --- Bottom CTA Section --- */
+        .cta-section {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="container animate-up">
+        <div class="logo">
+            🎬 <span>Editin Bang!</span>
+        </div>
+        <a href="#portfolio" class="nav-btn">Lihat Hasil</a>
+    </nav>
+
+    <header class="container">
+        <div class="hero-profile animate-up">
+            <img src="logo.png" alt="Logo Editin Bang" class="profile-img">
+        </div>
+
+        <h1 class="animate-up delay-1">Editin Bang!</h1>
+        <p class="tagline animate-up delay-2">Capek ngedit? Just say "Editin Bang!" 🔥<br>Jasa editing video andalan konten kreator.</p>
+        <div class="animate-up delay-3">
+            <a href="https://wa.me/NOMOR_WA_KAMU" class="btn-primary" target="_blank">Order Sekarang</a>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="features">
+            <div class="feature-card animate-up delay-1">
+                <h3>✨ Hasil Pejabat</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Kualitas editing premium dengan #stylesemaumu.</p>
+            </div>
+            <div class="feature-card animate-up delay-2">
+                <h3>💸 Harga Merakyat</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Budget bersahabat buat YouTuber pemula maupun pro. Margin cuan kamu aman.</p>
+            </div>
+            <div class="feature-card animate-up delay-3">
+                <h3>🔄 Gratis Revisi</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Masih ada yang kurang pas? Tim kami siap bantu revisi sampai kamu benar-benar puas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-wrapper animate-up delay-2">
+        <div class="container section-header">
+            <p class="section-subtitle">DIPERCAYA OLEH PULUHAN YOUTUBER CONTENT CREATOR</p>
+        </div>
+        
+<div class="h-slider" style="justify-content: center; max-width: 1000px; margin: 0 auto;">
+            <img src="logo-klien1.jpg" alt="Klien 1" class="client-avatar" style="object-fit: cover;">
+            <img src="logo-klien2.jpg" alt="Klien 2" class="client-avatar" style="object-fit: cover;">
+            <img src="logo-klien3.jpg" alt="Klien 3" class="client-avatar" style="object-fit: cover;">
+            <img src="logo-klien4.jpg" alt="Klien 4" class="client-avatar" style="object-fit: cover;">
+            <img src="logo-klien5.jpg" alt="Klien 5" class="client-avatar" style="object-fit: cover;">
+            <img src="logo-klien6.jpg" alt="Klien 6" class="client-avatar" style="object-fit: cover;">
+        </div>
+    </section>
+
+    <section id="portfolio" class="section-wrapper animate-up delay-2">
+        <div class="container section-header">
+            <p class="section-subtitle">Video Mereka</p>
+        </div>
+        
+        <div class="h-slider">
+            <div class="short-card">
+                <iframe src="https://www.youtube.com/embed/c5t3yx6v87A" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+
+            <div class="short-card">
+                <iframe src="https://www.youtube.com/embed/SHGsh2qFlhA" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+
+            <div class="short-card">
+                <iframe src="https://www.youtube.com/embed/BsIKN-8oPn0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+
+            <div class="short-card">
+                <iframe src="https://www.youtube.com/embed/Mpk-cQYq1vE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            
+            <div class="short-card">
+                <iframe src="https://www.youtube.com/embed/zj2X29I9-AQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+
+          <div class="short-card">
+                <iframe src="https://www.youtube.com/embed/_DNlnyoyOlU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-wrapper animate-up delay-3">
+        <div class="container section-header">
+            <p class="section-subtitle">TESTIMONI KLIEN (WhatsApp)</p>
+        </div>
+        
+        <div class="h-slider">
+            <div class="testi-card">
+                <img src="https://via.placeholder.com/220x380/1e293b/94a3b8?text=Chat+WA+1" alt="Testimoni WA 1" class="testi-img">
+            </div>
+            <div class="testi-card">
+                <img src="https://via.placeholder.com/220x380/1e293b/94a3b8?text=Chat+WA+2" alt="Testimoni WA 2" class="testi-img">
+            </div>
+            <div class="testi-card">
+                <img src="https://via.placeholder.com/220x380/1e293b/94a3b8?text=Chat+WA+3" alt="Testimoni WA 3" class="testi-img">
+            </div>
+            <div class="testi-card">
+                <img src="https://via.placeholder.com/220x380/1e293b/94a3b8?text=Chat+WA+4" alt="Testimoni WA 4" class="testi-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section animate-up delay-3">
+        <div class="container">
+            <h2>sudah siap kami editkan?</h2>
+            <a href="https://wa.me/NOMOR_WA_KAMU" class="btn-primary" target="_blank">Order Sekarang</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Editin Bang! | All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
